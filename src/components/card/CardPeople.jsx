@@ -1,27 +1,35 @@
-import './CardPeople.css';
+import styled from 'styled-components';
 import { AiFillCloseCircle, AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import {
+  Card,
+  CardHead,
+  CardInfo,
+  CardTitle,
+  CardPosition,
+  Image,
+} from '../../StyledComponents/CardStyled/Main';
 const CardPeople = ({ datos, highlight, deleteCollaborator, like }) => {
   const { name, position, photo, team, id, fav } = datos;
   return (
-    <div className="collaborator">
+    <Card>
       <AiFillCloseCircle
-        className="eliminar"
+        className="delete"
         onClick={() => deleteCollaborator(id)}
       />
-      <div className="encabezado" style={{ backgroundColor: highlight }}>
-        <img src={photo} alt={name} />
-      </div>
-      <div className="info">
-        <h4 className="title">{name}</h4>
-        <h5 className="position">{position}</h5>
+      <CardHead className="encabezado" style={{ backgroundColor: highlight }}>
+        <Image src={photo} alt={name} />
+      </CardHead>
+      <CardInfo>
+        <CardTitle>{name}</CardTitle>
+        <CardPosition>{position}</CardPosition>
 
         {fav ? (
           <AiFillHeart color="red" onClick={() => like(id)} />
         ) : (
           <AiOutlineHeart onClick={() => like(id)} />
         )}
-      </div>
-    </div>
+      </CardInfo>
+    </Card>
   );
 };
 

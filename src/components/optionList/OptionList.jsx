@@ -1,12 +1,13 @@
-import './OptionList.css';
+import { Label } from '../../StyledComponents/Label';
+import Select from '../../StyledComponents/Select';
 const OptionList = ({ valor, updateValue, teams }) => {
   const handleChange = (e) => {
     updateValue(e.target.value);
   };
   return (
     <div className="optionList">
-      <label>Equipos</label>
-      <select value={valor} onChange={handleChange}>
+      <Label>Equipos</Label>
+      <Select value={valor} onChange={handleChange}>
         <option value="" disabled defaultValue="" hidden>
           Seleccionar equipo
         </option>
@@ -15,7 +16,7 @@ const OptionList = ({ valor, updateValue, teams }) => {
             {team}
           </option>
         ))}
-      </select>
+      </Select>
     </div>
   );
 };

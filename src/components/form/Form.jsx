@@ -1,6 +1,6 @@
 import InputText from '../input/InputText';
 import OptionList from '../optionList/OptionList';
-import Button from '../button/Button';
+import { Button } from '../../StyledComponents/Button';
 import './Form.css';
 import { useState } from 'react';
 
@@ -47,7 +47,7 @@ const Form = ({ teams, registerCollaborator }) => {
           required
         />
         <OptionList valor={team} updateValue={setTeam} teams={teams} />
-        <Button title="Crear" />
+        <Button>Crear</Button>
       </form>
     </section>
   );

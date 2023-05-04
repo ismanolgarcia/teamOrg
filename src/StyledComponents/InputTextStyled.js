@@ -1,12 +1,7 @@
-.optionList label {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  display: block;
-  margin: 0 0 8px 0;
-}
+import styled from 'styled-components';
 
-.optionList select {
+export const InputTextStyled = styled.input`
+  font-family: 'Montserrat', sans-serif;
   width: 100%;
   background-color: #ffffff;
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.06);
@@ -14,4 +9,4 @@
   padding: 30px 20px;
   outline-color: #6278f7;
   font-size: 16px;
-}
+`;

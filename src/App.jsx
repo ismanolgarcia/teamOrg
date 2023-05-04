@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { uid } from 'uid';
-import './App.css';
 import Header from './components/header/Header';
 import Form from './components/form/Form';
 import MiOrg from './components/miorg/MiOrg';
 import Team from './components/team/Team';
 import Footer from './components/footer/Footer';
+import GlobalStyle from './styles/GlobalStyle';
 
 function App() {
   const [verForm, setForm] = useState(true);
@@ -80,9 +80,10 @@ function App() {
     });
     setCollaborators(newLikes);
   };
-
+  // 809-397-2545
   return (
     <div className="App">
+      <GlobalStyle />
       <Header />
       {verForm === true ? (
         <Form

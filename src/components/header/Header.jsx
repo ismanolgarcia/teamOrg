@@ -1,11 +1,21 @@
-import './Header.css';
+import styled from 'styled-components';
+import headero from '../../../public/assets/img/Header.png';
 
-function Header() {
+const Headere = styled.header`
+  background-color: #6278f7;
+  text-align: center;
+`;
+
+const ImgHeader = styled.img`
+  max-width: 100%;
+`;
+
+const Header = () => {
   return (
-    <header className="header">
-      <img src="/assets/img/Header.png" alt="banner" />
-    </header>
+    <Headere>
+      <ImgHeader src={headero} />
+    </Headere>
   );
-}
+};
 
 export default Header;
