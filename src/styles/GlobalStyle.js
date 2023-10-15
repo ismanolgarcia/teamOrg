@@ -9,6 +9,10 @@ const GlobalStyle = createGlobalStyle`
   list-style: none;
   font-family: 'Prata', serif;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 `;
 
 export default GlobalStyle;

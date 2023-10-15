@@ -1,86 +1,98 @@
-import { useState } from 'react';
-import { uid } from 'uid';
-import Header from './components/header/Header';
-import Form from './components/form/Form';
-import MiOrg from './components/miorg/MiOrg';
-import Team from './components/team/Team';
-import Footer from './components/footer/Footer';
+import { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { Header, Form, MiOrg, Team, Footer } from './components';
 import GlobalStyle from './styles/GlobalStyle';
 
 function App() {
   const [verForm, setForm] = useState(true);
   const [collaborators, setCollaborators] = useState([]);
 
+  useEffect(() => {
+    const savedCollaborators = JSON.parse(
+      localStorage.getItem('collaborators')
+    );
+    if (savedCollaborators) {
+      setCollaborators(savedCollaborators);
+    }
+  }, []);
+
   const [teams, setTeams] = useState([
     {
-      id: uid(),
+      id: uuidv4(),
       title: 'Programación',
       bgColor: '#D9F7E9',
       highlight: '#57C278',
     },
     {
-      id: uid(),
+      id: uuidv4(),
       title: 'Front End',
       bgColor: '#E8F8FF',
       highlight: '#82CFFA',
     },
     {
-      id: uid(),
+      id: uuidv4(),
       title: 'Data Science',
       bgColor: '#F0F8E2',
       highlight: '#A6D157',
     },
     {
-      id: uid(),
+      id: uuidv4(),
       title: 'Devops',
       bgColor: '#FDE7E8',
       highlight: '#E06B69',
     },
     {
-      id: uid(),
+      id: uuidv4(),
       title: 'UX y Diseño',
       bgColor: '#FAE9F5',
       highlight: '#DB6EBF',
     },
     {
-      id: uid(),
+      id: uuidv4(),
       title: 'Móvil',
       bgColor: '#FFF5D9',
       highlight: '#FFBA05',
     },
     {
-      id: uid(),
+      id: uuidv4(),
       title: 'Innovación y Gestión',
       bgColor: '#FFEEDF',
       highlight: '#FF8A29',
     },
   ]);
-
   const changeForm = () => {
     setForm(!verForm);
   };
 
   const registerCollaborator = (collaborator) => {
-    setCollaborators([...collaborators, collaborator]);
+    const newCollaborator = { ...collaborator, id: uuidv4() };
+    setCollaborators([...collaborators, newCollaborator]);
+    localStorage.setItem(
+      'collaborators',
+      JSON.stringify([...collaborators, newCollaborator])
+    );
   };
 
   const deleteCollaborator = (id) => {
-    const newCollaborator = collaborators.filter(
+    const newCollaborators = collaborators.filter(
       (collaborator) => collaborator.id !== id
     );
-    setCollaborators(newCollaborator);
+    setCollaborators(newCollaborators);
+    localStorage.setItem('collaborators', JSON.stringify(newCollaborators));
   };
 
   const like = (id) => {
-    const newLikes = collaborators.map((newLike) => {
-      if (newLike.id === id) {
-        newLike.fav = !newLike.fav;
+    const newLikes = collaborators.map((collaborator) => {
+      if (collaborator.id === id) {
+        return { ...collaborator, fav: !collaborator.fav };
+      } else {
+        return collaborator;
       }
-      return newLike;
     });
     setCollaborators(newLikes);
+    localStorage.setItem('collaborators', JSON.stringify(newLikes));
   };
-  // 809-397-2545
+
   return (
     <div className="App">
       <GlobalStyle />
