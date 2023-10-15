@@ -24,7 +24,7 @@ const Form = ({ teams, registerCollaborator }) => {
   return (
     <section className="form">
       <form onSubmit={handleEvent}>
-        <h2>Rellena el formulario para crear el collaborator.</h2>
+        <h2>Rellena el formulario para crear el colaborador.</h2>
         <InputText
           title="Nombre"
           placeholder="Ingresar name"
